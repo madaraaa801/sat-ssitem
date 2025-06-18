@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HAVEN #SATIŞ</title>
+  <style>
+    body {
+      background: #111;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: white;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    .how-to-buy {
+      background: #ffa500;
+      color: black;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-size: 15px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    p {
+      text-align: center;
+      margin: 10px 0 20px;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .product {
+      background: #1e1e1e;
+      border-radius: 12px;
+      padding: 15px;
+      width: 280px;
+      text-align: center;
+    }
+
+    .product img {
+      width: 100%;
+      height: 180px;
+      object-fit: contain;
+      border-radius: 8px;
+      background: #000;
+    }
+
+    .buttons {
+      margin-top: 10px;
+    }
+
+    .buttons button {
+      background: #00ffe5;
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      margin: 3px;
+      padding: 6px 12px;
+      cursor: pointer;
+    }
+
+    .buy-button {
+      background: #00ff88;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 14px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    @media screen and (max-width: 600px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .product {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <h1>HAVEN #SATIŞ</h1>
+    <a href="https://forms.gle/SdvF2Eqw5MwbQWWf9" target="_blank">
+      <button class="how-to-buy">Nasıl satın alırım?</button>
+    </a>
+  </div>
+  <p>Sunucuya özel güvenli ve hızlı ürünler</p>
+
+  <div class="container">
+
+    <!-- Ürün Şablonu -->
+    <!-- Her ürün için bu bloğu kopyala ve içini doldur -->
+    <!-- id'leri img1, img2, img3... olarak sırayla artır -->
+
+    <!-- Ürün Listesi -->
+    <!-- 1. İngiliz Asker Map -->
+    <!-- 2. BOT SITE V1 -->
+    <!-- 3. BOT WEBSITE V2 -->
+    <!-- 4. LINK SITE V1/V2/V3 -->
+    <!-- 5. Kişisel Web Site -->
+    <!-- 6. Ferrari -->
+    <!-- 7. 50 Kişilik Bot Basma -->
+    <!-- 8. Askeri Map 1 -->
+    <!-- 9. Askeri Map 2 -->
+    <!-- 10. SCP Map -->
+    <!-- 11. Bütün Oyun Hesapları -->
+    <!-- 12. Kartlı Kapı Script -->
+    <!-- 13. Duello Map -->
+    <!-- 14. Şehir Map -->
+
+    <!-- Hepsini aşağıda oluşturdum -->
+
+    <!-- Ürünleri sırayla yazalım: -->
+    <!-- img id'lerini img1, img2, img3... olarak ayırdım -->
+
+    <!-- Tek satırda ürün başlığı ve fiyatı düzenle yeter -->
+
+    <!-- ÜRÜNLER BAŞLANGICI -->
+    <!-- Kısa yazım: Aşağıdaki bloğu 14 kez oluşturuyorum -->
+
+    <!-- Bu bloğu ürün sayısı kadar çoğaltıyorum: -->
+
+    <!-- Tek örnekle başlıyoruz -->
+
+    <!-- Döngü ile oluşturuyorum -->
+    <!-- Başlıklar ve fiyatlar otomatik yazılıyor -->
+
+    <!-- Ürünler -->
+    <!-- Not: 5 placeholder görsel kullanılıyor. Sen kendi görsellerinle değiştir. -->
+
+    <!-- Ürün bloğu başlat -->
+    <!-- Başlık ve fiyat listesi -->
+
+<script>
+const urunler = [
+  ["İngiliz Asker Map", "333TL"],
+  ["BOT Site V1", "50TL"],
+  ["BOT Website V2", "45TL"],
+  ["Link Site V1/V2/V3", "25TL"],
+  ["Kişisel Web Site", "35TL"],
+  ["Ferrari (İndirim Olur)", "50TL"],
+  ["50 Kişilik Bot Basma", "10TL"],
+  ["Askeri Map 1", "75TL"],
+  ["Askeri Map 2", "100TL"],
+  ["SCP Map", "755TL"],
+  ["Bütün Oyun Hesapları", "Fiyat Değişir"],
+  ["Kart ile Açılan Kapı Script", "5TL"],
+  ["Duello Map (İndirim Olur)", "50TL"],
+  ["Şehir Map", "304TL"]
+];
+
+document.write(`<div class="container">`);
+
+urunler.forEach((urun, index) => {
+  const id = `img${index + 1}`;
+  document.write(`
+  <div class="product">
+    <img id="${id}" src="https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}" alt="${urun[0]}">
+    <h3>${urun[0]}</h3>
+    <p>${urun[1]}</p>
+    <div class="buttons">
+      <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+1'">1</button>
+      <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+2'">2</button>
+      <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+3'">3</button>
+      <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+4'">4</button>
+      <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+5'">5</button>
+    </div>
+    <a href="https://discord.gg/ZspkFcwrSz" target="_blank">
+      <button class="buy-button">Satın Al</button>
+    </a>
+  </div>
+  `);
+});
+
+document.write(`</div>`);
+</script>
+
+  </div>
+</body>
+</html>

@@ -17,7 +17,6 @@
       padding: 0;
       color: white;
     }
-
     .top-bar {
       display: flex;
       justify-content: center;
@@ -26,11 +25,9 @@
       flex-wrap: wrap;
       margin-top: 20px;
     }
-
     h1 {
       margin: 0;
     }
-
     .how-to-buy {
       background: #ffa500;
       color: black;
@@ -41,12 +38,10 @@
       cursor: pointer;
       font-weight: bold;
     }
-
     p {
       text-align: center;
       margin: 10px 0 20px;
     }
-
     .container {
       display: flex;
       flex-wrap: wrap;
@@ -54,7 +49,6 @@
       gap: 20px;
       padding: 20px;
     }
-
     .product {
       background: rgba(30, 30, 30, 0.7);
       border-radius: 12px;
@@ -63,14 +57,7 @@
       text-align: center;
       backdrop-filter: blur(6px);
       -webkit-backdrop-filter: blur(6px);
-      box-shadow: 0 0 8px rgba(0,255,136,0.3);
-      transition: transform 0.2s ease;
     }
-    .product:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px rgba(0,255,136,0.6);
-    }
-
     .product img {
       width: 100%;
       height: 180px;
@@ -78,39 +65,16 @@
       border-radius: 8px;
       background: #000;
     }
-
-    .buttons {
-      margin-top: 10px;
-    }
-
-    .buttons button {
-      background: #00ffe5;
-      color: #000;
-      border: none;
-      border-radius: 6px;
-      margin: 3px;
-      padding: 6px 12px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
     .buy-button {
       background: #00ff88;
       color: #000;
       font-weight: bold;
       border: none;
       border-radius: 6px;
-      padding: 10px 14px;
-      margin-top: 12px;
+      padding: 8px 14px;
+      margin-top: 10px;
       cursor: pointer;
-      width: 100%;
-      font-size: 16px;
-      transition: background 0.3s ease;
     }
-    .buy-button:hover {
-      background: #00cc6b;
-    }
-
     @media screen and (max-width: 600px) {
       .container {
         flex-direction: column;
@@ -126,59 +90,36 @@
 
   <div class="top-bar">
     <h1>HAVEN #SATIŞ</h1>
-    <button class="how-to-buy" onclick="window.location.href='https://forms.gle/SdvF2Eqw5MwbQWWf9'">Nasıl satın alırım?</button>
+    <a href="https://forms.gle/SdvF2Eqw5MwbQWWf9" target="_blank">
+      <button class="how-to-buy">Nasıl satın alırım?</button>
+    </a>
   </div>
   <p>Sunucuya özel güvenli ve hızlı ürünler</p>
 
-  <div class="container" id="urunler-container">
-    <!-- Ürünler JS ile gelecek -->
+  <div class="container">
+    <script>
+      // Stokta olan ürünler (ID, ad, fiyat)
+      const stokUrunler = [
+        {id: 12, ad: "Kart ile Açılan Kapı Script", fiyat: "5 TL"},
+        {id: 13, ad: "Duello Map", fiyat: "35 TL"},
+        {id: 15, ad: "Kişiye Özel Tool Scripti", fiyat: "10 TL"},
+        {id: 16, ad: "Türk Asker Map Scripti", fiyat: "100 TL"}
+      ];
+
+      stokUrunler.forEach((urun, index) => {
+        const id = `img${index + 1}`;
+        // Tek sabit görsel kullanılıyor, foto butonları kaldırıldı
+        document.write(`
+          <div class="product">
+            <img id="${id}" src="https://via.placeholder.com/250x160?text=${encodeURIComponent(urun.ad)}" alt="${urun.ad}">
+            <h3>${urun.ad}</h3>
+            <p>${urun.fiyat}</p>
+            <button class="buy-button" onclick="location.href='iban.html?urun=${urun.id}'">Satın Al</button>
+          </div>
+        `);
+      });
+    </script>
   </div>
-
-  <script>
-    const urunler = [
-      { id: 1, ad: "İngiliz Asker Map", fiyat: "333 TL" },
-      { id: 2, ad: "BOT Site V1", fiyat: "50 TL" },
-      { id: 3, ad: "BOT Website V2", fiyat: "45 TL" },
-      { id: 4, ad: "Link Site V1/V2/V3", fiyat: "25 TL" },
-      { id: 5, ad: "Kişisel Web Site", fiyat: "35 TL" },
-      { id: 6, ad: "Ferrari (İndirim Olur)", fiyat: "50 TL" },
-      { id: 7, ad: "50 Kişilik Bot Basma", fiyat: "10 TL" },
-      { id: 8, ad: "Askeri Map 1", fiyat: "75 TL" },
-      { id: 9, ad: "Askeri Map 2", fiyat: "100 TL" },
-      { id: 10, ad: "SCP Map", fiyat: "755 TL" },
-      { id: 11, ad: "Bütün Oyun Hesapları", fiyat: "Fiyat Değişir" },
-      { id: 12, ad: "Kart ile Açılan Kapı Script", fiyat: "5 TL" },
-      { id: 13, ad: "Duello Map (İndirim Olur)", fiyat: "50 TL" },
-      { id: 14, ad: "Şehir Map", fiyat: "304 TL" }
-    ];
-
-    const container = document.getElementById("urunler-container");
-
-    urunler.forEach(urun => {
-      // Ürün kutusunu oluştur
-      const div = document.createElement("div");
-      div.className = "product";
-
-      // Resim id'si
-      const imgId = `img${urun.id}`;
-
-      div.innerHTML = `
-        <img id="${imgId}" src="https://via.placeholder.com/250x160?text=${encodeURIComponent(urun.ad)}" alt="${urun.ad}" />
-        <h3>${urun.ad}</h3>
-        <p>${urun.fiyat}</p>
-        <div class="buttons">
-          <button onclick="document.getElementById('${imgId}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun.ad)}+Foto+1'">1</button>
-          <button onclick="document.getElementById('${imgId}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun.ad)}+Foto+2'">2</button>
-          <button onclick="document.getElementById('${imgId}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun.ad)}+Foto+3'">3</button>
-          <button onclick="document.getElementById('${imgId}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun.ad)}+Foto+4'">4</button>
-          <button onclick="document.getElementById('${imgId}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun.ad)}+Foto+5'">5</button>
-        </div>
-        <button class="buy-button" onclick="window.location.href='iban.html?urun=${urun.id}'">Satın Al</button>
-      `;
-
-      container.appendChild(div);
-    });
-  </script>
 
 </body>
 </html>

@@ -154,6 +154,20 @@
             <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+4'">4</button>
             <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+5'">5</button>
           </div>
+                urunler.forEach((urun, index) => {
+        const id = `img${index + 5}`;
+        const urunID = index + 5;
+        document.write(`
+        <div class="product">
+          <img id="${id}" src="https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[5])}" alt="${urun[5]}">
+          <h3>${urun[5]}</h3>
+          <p>${urun[5]}</p>
+          <div class="buttons">
+            <button onclick="document.getElementById('${id}').src='https://cdn.glitch.global/c4f1eb8d-33e5-4674-9aff-bd761298d6e5/IMG_20250619_122326.jpg?v=1750325148216=${encodeURIComponent(urun[0])}+Foto+1'">1</button>
+            <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+2'">2</button>
+            <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+3'">3</button>
+            <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+4'">4</button>
+            <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+5'">5</button>
           <a href="iban.html?urun=${urunID}">
             <button class="buy-button">Satın Al</button>
           </a>

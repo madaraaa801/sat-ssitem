@@ -2,19 +2,66 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Ödeme Sayfası</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IBAN ile Ödeme</title>
   <style>
-    body { background: #111; color: white; font-family: sans-serif; text-align: center; padding: 20px; }
-    .box { background: #222; padding: 20px; border-radius: 10px; display: inline-block; margin-top: 40px; }
-    input, button { padding: 10px; margin-top: 10px; border-radius: 5px; border: none; }
+    body {
+      background: #111;
+      color: white;
+      font-family: sans-serif;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .box {
+      background: #222;
+      border-radius: 12px;
+      padding: 30px;
+      max-width: 400px;
+      margin: 40px auto;
+    }
+
+    h2 {
+      color: #00ff88;
+    }
+
+    p {
+      margin: 10px 0;
+    }
+
+    input, button {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      width: 100%;
+    }
+
+    button {
+      background: #00ff88;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    input[type="file"] {
+      background: #fff;
+      color: #000;
+    }
+
+    input[type="text"] {
+      background: #333;
+      color: white;
+    }
   </style>
 </head>
 <body>
+
   <div class="box">
     <h2 id="urun-adi">Ürün</h2>
     <p id="fiyat">Fiyat: ...</p>
     <p><strong>IBAN:</strong><br>TR12 3456 7890 1234 5678 9012 34</p>
-    <p>Lütfen yukarıdaki IBAN'a ödeme yapıp dekontu yükleyin.</p>
+    <p>IBAN'a ürünün ücretini gönderin ve dekont yükleyin.</p>
 
     <form action="yukle.php" method="POST" enctype="multipart/form-data">
       <input type="hidden" name="urun_id" id="urun_id" value="">
@@ -31,19 +78,20 @@
       3: { ad: "BOT Website V2", fiyat: "45 TL" },
       4: { ad: "Link Site V1/V2/V3", fiyat: "25 TL" },
       5: { ad: "Kişisel Web Site", fiyat: "35 TL" },
-      6: { ad: "Ferrari", fiyat: "50 TL" },
+      6: { ad: "Ferrari (İndirim Olur)", fiyat: "50 TL" },
       7: { ad: "50 Kişilik Bot Basma", fiyat: "10 TL" },
       8: { ad: "Askeri Map 1", fiyat: "75 TL" },
       9: { ad: "Askeri Map 2", fiyat: "100 TL" },
       10: { ad: "SCP Map", fiyat: "755 TL" },
-      11: { ad: "Bütün Oyun Hesapları", fiyat: "Fiyat değişir" },
-      12: { ad: "Kartlı Kapı Script", fiyat: "5 TL" },
-      13: { ad: "Duello Map", fiyat: "50 TL" },
+      11: { ad: "Bütün Oyun Hesapları", fiyat: "Fiyat Değişir" },
+      12: { ad: "Kart ile Açılan Kapı Script", fiyat: "5 TL" },
+      13: { ad: "Duello Map (İndirim Olur)", fiyat: "50 TL" },
       14: { ad: "Şehir Map", fiyat: "304 TL" }
     };
 
     const params = new URLSearchParams(window.location.search);
     const urunID = params.get("urun");
+
     if (urunler[urunID]) {
       document.getElementById("urun-adi").innerText = urunler[urunID].ad;
       document.getElementById("fiyat").innerText = "Fiyat: " + urunler[urunID].fiyat;
@@ -52,5 +100,6 @@
       document.querySelector(".box").innerHTML = "<p>Geçersiz ürün ID!</p>";
     }
   </script>
+
 </body>
 </html>

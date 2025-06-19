@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Ödeme Sayfası</title>
+  <style>
+    body { background: #111; color: white; font-family: sans-serif; text-align: center; padding: 20px; }
+    .box { background: #222; padding: 20px; border-radius: 10px; display: inline-block; margin-top: 40px; }
+    input, button { padding: 10px; margin-top: 10px; border-radius: 5px; border: none; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2 id="urun-adi">Ürün</h2>
+    <p id="fiyat">Fiyat: ...</p>
+    <p><strong>IBAN:</strong><br>TR12 3456 7890 1234 5678 9012 34</p>
+    <p>Lütfen yukarıdaki IBAN'a ödeme yapıp dekontu yükleyin.</p>
+
+    <form action="yukle.php" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="urun_id" id="urun_id" value="">
+      <input type="file" name="dekont" required><br>
+      <input type="text" name="discord" placeholder="Discord Adınız" required><br>
+      <button type="submit">Gönder</button>
+    </form>
+  </div>
+
+  <script>
+    const urunler = {
+      1: { ad: "İngiliz Asker Map", fiyat: "333 TL" },
+      2: { ad: "BOT Site V1", fiyat: "50 TL" },
+      3: { ad: "BOT Website V2", fiyat: "45 TL" },
+      4: { ad: "Link Site V1/V2/V3", fiyat: "25 TL" },
+      5: { ad: "Kişisel Web Site", fiyat: "35 TL" },
+      6: { ad: "Ferrari", fiyat: "50 TL" },
+      7: { ad: "50 Kişilik Bot Basma", fiyat: "10 TL" },
+      8: { ad: "Askeri Map 1", fiyat: "75 TL" },
+      9: { ad: "Askeri Map 2", fiyat: "100 TL" },
+      10: { ad: "SCP Map", fiyat: "755 TL" },
+      11: { ad: "Bütün Oyun Hesapları", fiyat: "Fiyat değişir" },
+      12: { ad: "Kartlı Kapı Script", fiyat: "5 TL" },
+      13: { ad: "Duello Map", fiyat: "50 TL" },
+      14: { ad: "Şehir Map", fiyat: "304 TL" }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const urunID = params.get("urun");
+    if (urunler[urunID]) {
+      document.getElementById("urun-adi").innerText = urunler[urunID].ad;
+      document.getElementById("fiyat").innerText = "Fiyat: " + urunler[urunID].fiyat;
+      document.getElementById("urun_id").value = urunID;
+    } else {
+      document.querySelector(".box").innerHTML = "<p>Geçersiz ürün ID!</p>";
+    }
+  </script>
+</body>
+</html>

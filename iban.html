@@ -16,6 +16,27 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      position: relative;
+    }
+
+    .important-button {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      background-color: #00ff88;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 20px;
+      cursor: pointer;
+      font-size: 16px;
+      box-shadow: 0 0 10px #00ff88aa;
+      z-index: 1000;
+      transition: background-color 0.3s ease;
+    }
+    .important-button:hover {
+      background-color: #00cc6b;
     }
 
     .box {
@@ -75,6 +96,8 @@
   </style>
 </head>
 <body>
+
+  <button class="important-button" onclick="window.location.href='https://forms.gle/SdvF2Eqw5MwbQWWf9'">ÖNEMLİ</button>
 
   <div class="box" id="main-box">
     <h2 id="urun-adi">Ürün</h2>

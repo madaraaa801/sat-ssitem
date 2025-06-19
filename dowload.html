@@ -3,99 +3,102 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>İndir - HAVEN #SATIŞ</title>
+  <title>Ürün İndirme</title>
   <style>
     body {
       background: #111;
       color: white;
-      font-family: 'Segoe UI', sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
+      font-family: sans-serif;
       padding: 20px;
-      text-align: center;
-    }
-    .container {
-      background: rgba(30, 30, 30, 0.85);
-      padding: 30px;
-      border-radius: 12px;
-      max-width: 400px;
-      width: 100%;
-      box-shadow: 0 0 15px rgba(0, 255, 136, 0.7);
+      max-width: 600px;
+      margin: 0 auto;
     }
     h1 {
-      margin-bottom: 20px;
+      text-align: center;
       color: #00ff88;
     }
-    p {
-      margin-bottom: 15px;
+    .urun {
+      background: #222;
+      margin: 15px 0;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00ff8877;
     }
-    a.download-btn {
+    a.indirme-link {
       display: inline-block;
-      padding: 12px 24px;
+      margin-top: 10px;
       background: #00ff88;
-      color: black;
+      color: #000;
       font-weight: bold;
-      border-radius: 8px;
+      padding: 8px 15px;
+      border-radius: 6px;
       text-decoration: none;
       transition: background 0.3s ease;
     }
-    a.download-btn:hover {
+    a.indirme-link:hover {
       background: #00cc6b;
+    }
+    .disabled-link {
+      display: inline-block;
+      margin-top: 10px;
+      background: #555;
+      color: #aaa;
+      padding: 8px 15px;
+      border-radius: 6px;
+      text-decoration: none;
+      cursor: default;
     }
     .error {
       color: #ff4444;
       font-weight: bold;
+      text-align: center;
+      margin-top: 30px;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>İndirme Sayfası</h1>
-    <div id="content"></div>
-  </div>
+
+  <h1>Satın Aldığınız Ürünlerin İndirme Linkleri</h1>
+
+  <div id="urunler-container"></div>
 
   <script>
-    // Ürünler ve indirme linkleri (örnek)
     const urunler = {
-      1: { ad: "İngiliz Asker Map", link: "https://example.com/downloads/ingiliz-asker-map.zip" },
-      2: { ad: "BOT Site V1", link: "https://example.com/downloads/bot-site-v1.zip" },
-      3: { ad: "BOT Website V2", link: "https://example.com/downloads/bot-website-v2.zip" },
-      4: { ad: "Link Site V1/V2/V3", link: "https://example.com/downloads/link-site.zip" },
-      5: { ad: "Kişisel Web Site", link: "https://example.com/downloads/kisisel-web-site.zip" }
-      // Diğer ürünleri ekleyebilirsin
+      "12": { ad: "Kart ile Açılan Kapı Script", link: "https://example.com/indir/urun12.zip" },
+      "13": { ad: "Duello Map", link: "https://example.com/indir/urun13.zip" },
+      "15": { ad: "Kişiye Özel Tool Scripti", link: "https://example.com/indir/urun15.zip" },
+      "16": { ad: "Türk Asker Map Scripti", link: "https://example.com/indir/urun16.zip" }
     };
 
-    // Kullanıcı tokenleri ve izin verilen ürünler (örnek)
-    // token: ürünID eşlemesi (gerçek hayatta bu backendde olmalı)
-    const validTokens = {
-      "abc123": 1,  // abc123 tokenı sadece ürün 1 için geçerli
-      "xyz789": 3,  // xyz789 tokenı ürün 3 için geçerli
-      "token456": 5 // token456 ürün 5 için geçerli
-    };
-
+    const container = document.getElementById("urunler-container");
     const params = new URLSearchParams(window.location.search);
-    const urunID = params.get("urun");
-    const token = params.get("token");
-    const user = params.get("user") || "Değerli Müşterimiz";
+    const urunParam = params.get("urun");
 
-    const contentDiv = document.getElementById("content");
+    const satinAlinanSet = new Set();
+    if (urunParam) {
+      urunParam.split(",").map(id => id.trim()).forEach(id => satinAlinanSet.add(id));
+    }
 
-    // Kontrol: token geçerli mi ve ürüne izin var mı?
-    if (token && validTokens[token] && validTokens[token] == urunID && urunler[urunID]) {
-      contentDiv.innerHTML = `
-        <p>Merhaba <strong>${user}</strong>,</p>
-        <p><strong>${urunler[urunID].ad}</strong> ürününüzü aşağıdaki butona tıklayarak indirebilirsiniz.</p>
-        <a href="${urunler[urunID].link}" class="download-btn" download>İndir</a>
-      `;
-    } else if (!token) {
-      contentDiv.innerHTML = `<p class="error">Erişim için geçerli bir token sağlanmamış.</p>`;
-    } else {
-      contentDiv.innerHTML = `<p class="error">Geçersiz token veya ürün erişim izni yok.</p>`;
+    Object.keys(urunler).forEach(id => {
+      const urun = urunler[id];
+      const div = document.createElement("div");
+      div.className = "urun";
+
+      let linkHTML = '';
+      if (satinAlinanSet.has(id)) {
+        linkHTML = `<a href="${urun.link}" class="indirme-link" download>İndir</a>`;
+      } else {
+        linkHTML = `<span class="disabled-link" title="Bu ürünü satın almadınız">İndirme linki yok</span>`;
+      }
+
+      div.innerHTML = `<h2>${urun.ad}</h2>${linkHTML}`;
+      container.appendChild(div);
+    });
+
+    if (satinAlinanSet.size === 0) {
+      container.innerHTML = '<p class="error">Hiç ürün satın alınmamış ya da ürün parametresi yok.</p>';
     }
   </script>
+
 </body>
 </html>

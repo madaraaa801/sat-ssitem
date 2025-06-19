@@ -69,7 +69,6 @@
 
     <form action="yukle.php" method="POST" enctype="multipart/form-data" id="paymentForm">
       <input type="hidden" name="urun_id" id="urun_id" value="">
-      <!-- Token inputu, örnek olarak ekledim. Backendde doldurulmalı -->
       <input type="hidden" name="token" id="token" value="">
       
       <input type="file" name="dekont" required><br>
@@ -77,7 +76,6 @@
       <button type="submit">Gönder</button>
     </form>
 
-    <!-- Satın alma sonrası indirme linki burada gösterilebilir -->
     <div id="downloadArea"></div>
   </div>
 
@@ -99,19 +97,16 @@
       14: { ad: "Şehir Map", fiyat: "304 TL" }
     };
 
-    // URL parametreleri alınıyor
     const params = new URLSearchParams(window.location.search);
     const urunID = params.get("urun");
     const token = params.get("token") || "";
     const discordUser = params.get("discord") || "";
 
-    // Ürün bilgilerini göster
     if (urunler[urunID]) {
       document.getElementById("urun-adi").innerText = urunler[urunID].ad;
       document.getElementById("fiyat").innerText = "Fiyat: " + urunler[urunID].fiyat;
       document.getElementById("urun_id").value = urunID;
 
-      // Token varsa formdaki token alanına yaz
       if (token) {
         document.getElementById("token").value = token;
       }
@@ -119,18 +114,14 @@
       document.querySelector(".box").innerHTML = "<p>Geçersiz ürün ID!</p>";
     }
 
-    // Form gönderimi sonrası (örnek, gerçek iş backendde)
     document.getElementById("paymentForm").addEventListener("submit", function(e) {
       e.preventDefault();
-
-      // Burada dekont vs işlenir, backend ile iletişim olur.
-      // Şimdilik demo amaçlı token varsa indirme linkini gösteriyoruz:
 
       if(token && urunID) {
         const downloadArea = document.getElementById("downloadArea");
         const encodedDiscord = encodeURIComponent(discordUser || "Müşteri");
         downloadArea.innerHTML = `
-          <a class="download-link" href="download.html?urun=${urunID}&token=${token}&user=${encodedDiscord}" target="_blank">
+          <a class="download-link" href="download.html?urun=${urunID}&token=${token}&user=${encodedDiscord}">
             İndirme Sayfasına Git
           </a>
           <p style="margin-top:10px; font-size: 0.9em; color: #ccc;">

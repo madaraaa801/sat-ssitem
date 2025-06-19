@@ -5,18 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>HAVEN #SATIŞ</title>
   <style>
-       body {
-  background-image: url('https://i.postimg.cc/tgqZP6GN/file-00000000feb4620aac188b04b931771b.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: rgba(0, 0, 0, 0.6);
-  background-blend-mode: darken;
-  font-family: 'Segoe UI', sans-serif;
-  margin: 0;
-  padding: 0;
-  color: white;
-       }
+    body {
+      background-image: url('https://i.postimg.cc/tgqZP6GN/file-00000000feb4620aac188b04b931771b.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: rgba(0, 0, 0, 0.6);
+      background-blend-mode: darken;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: white;
+    }
 
     .top-bar {
       display: flex;
@@ -56,11 +56,12 @@
     }
 
     .product {
-      background: #1e1e1e;
+      background: rgba(30, 30, 30, 0.75); /* Şeffaf kutu */
       border-radius: 12px;
       padding: 15px;
       width: 280px;
       text-align: center;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     }
 
     .product img {
@@ -118,7 +119,6 @@
   <p>Sunucuya özel güvenli ve hızlı ürünler</p>
 
   <div class="container">
-
     <script>
       const urunler = [
         ["İngiliz Asker Map", "333TL"],
@@ -143,25 +143,26 @@
         const id = `img${index + 1}`;
         const urunID = index + 1;
         document.write(`
-        <div class="product">
-          <img id="${id}" src="https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}" alt="${urun[0]}">
-          <h3>${urun[0]}</h3>
-          <p>${urun[1]}</p>
-          <div class="buttons">
-            <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+1'">1</button>
-            <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+2'">2</button>
-            <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+3'">3</button>
-            <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+4'">4</button>
-            <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+5'">5</button>
+          <div class="product">
+            <img id="${id}" src="https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}" alt="${urun[0]}">
+            <h3>${urun[0]}</h3>
+            <p>${urun[1]}</p>
+            <div class="buttons">
+              <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+1'">1</button>
+              <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+2'">2</button>
+              <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+3'">3</button>
+              <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+4'">4</button>
+              <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+5'">5</button>
+            </div>
+            <a href="iban.html?urun=${urunID}" target="_blank">
+              <button class="buy-button">Satın Al</button>
+            </a>
           </div>
-          </a>
-        </div>
         `);
       });
 
       document.write(`</div>`);
     </script>
-
   </div>
 </body>
 </html>

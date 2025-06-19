@@ -6,7 +6,7 @@
   <title>HAVEN #SATIŞ</title>
   <style>
     body {
-      background-image: url('https://i.postimg.cc/tgqZP6GN/file-00000000feb4620aac188b04b931771b.png');
+      background-image: url('https://i.postimg.cc/tgqZP6GN/file-00000000feb4620aac188b04b931771b04b931771b.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -98,17 +98,15 @@
 
   <div class="container">
     <script>
-      // Stokta olan ürünler (ID, ad, fiyat)
       const stokUrunler = [
-        {id: 12, ad: "Kart ile Açılan Kapı Script", fiyat: "5 TL"},
-        {id: 13, ad: "Duello Map", fiyat: "35 TL"},
-        {id: 15, ad: "Kişiye Özel Tool Scripti", fiyat: "10 TL"},
-        {id: 16, ad: "Türk Asker Map Scripti", fiyat: "100 TL"}
+        {id: "12", ad: "Kart ile Açılan Kapı Script", fiyat: "5 TL"},
+        {id: "13", ad: "Duello Map", fiyat: "35 TL"},
+        {id: "15", ad: "Kişiye Özel Tool Scripti", fiyat: "10 TL"},
+        {id: "16", ad: "Türk Asker Map Scripti", fiyat: "100 TL"}
       ];
 
       stokUrunler.forEach((urun, index) => {
         const id = `img${index + 1}`;
-        // Tek sabit görsel kullanılıyor, foto butonları kaldırıldı
         document.write(`
           <div class="product">
             <img id="${id}" src="https://via.placeholder.com/250x160?text=${encodeURIComponent(urun.ad)}" alt="${urun.ad}">

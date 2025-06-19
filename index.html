@@ -114,92 +114,50 @@
 
   <div class="container">
 
-    <!-- Ürün Şablonu -->
-    <!-- Her ürün için bu bloğu kopyala ve içini doldur -->
-    <!-- id'leri img1, img2, img3... olarak sırayla artır -->
+    <script>
+      const urunler = [
+        ["İngiliz Asker Map", "333TL"],
+        ["BOT Site V1", "50TL"],
+        ["BOT Website V2", "45TL"],
+        ["Link Site V1/V2/V3", "25TL"],
+        ["Kişisel Web Site", "35TL"],
+        ["Ferrari (İndirim Olur)", "50TL"],
+        ["50 Kişilik Bot Basma", "10TL"],
+        ["Askeri Map 1", "75TL"],
+        ["Askeri Map 2", "100TL"],
+        ["SCP Map", "755TL"],
+        ["Bütün Oyun Hesapları", "Fiyat Değişir"],
+        ["Kart ile Açılan Kapı Script", "5TL"],
+        ["Duello Map (İndirim Olur)", "50TL"],
+        ["Şehir Map", "304TL"]
+      ];
 
-    <!-- Ürün Listesi -->
-    <!-- 1. İngiliz Asker Map -->
-    <!-- 2. BOT SITE V1 -->
-    <!-- 3. BOT WEBSITE V2 -->
-    <!-- 4. LINK SITE V1/V2/V3 -->
-    <!-- 5. Kişisel Web Site -->
-    <!-- 6. Ferrari -->
-    <!-- 7. 50 Kişilik Bot Basma -->
-    <!-- 8. Askeri Map 1 -->
-    <!-- 9. Askeri Map 2 -->
-    <!-- 10. SCP Map -->
-    <!-- 11. Bütün Oyun Hesapları -->
-    <!-- 12. Kartlı Kapı Script -->
-    <!-- 13. Duello Map -->
-    <!-- 14. Şehir Map -->
+      document.write(`<div class="container">`);
 
-    <!-- Hepsini aşağıda oluşturdum -->
+      urunler.forEach((urun, index) => {
+        const id = `img${index + 1}`;
+        const urunID = index + 1;
+        document.write(`
+        <div class="product">
+          <img id="${id}" src="https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}" alt="${urun[0]}">
+          <h3>${urun[0]}</h3>
+          <p>${urun[1]}</p>
+          <div class="buttons">
+            <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+1'">1</button>
+            <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+2'">2</button>
+            <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+3'">3</button>
+            <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+4'">4</button>
+            <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+5'">5</button>
+          </div>
+          <a href="iban.html?urun=${urunID}">
+            <button class="buy-button">Satın Al</button>
+          </a>
+        </div>
+        `);
+      });
 
-    <!-- Ürünleri sırayla yazalım: -->
-    <!-- img id'lerini img1, img2, img3... olarak ayırdım -->
-
-    <!-- Tek satırda ürün başlığı ve fiyatı düzenle yeter -->
-
-    <!-- ÜRÜNLER BAŞLANGICI -->
-    <!-- Kısa yazım: Aşağıdaki bloğu 14 kez oluşturuyorum -->
-
-    <!-- Bu bloğu ürün sayısı kadar çoğaltıyorum: -->
-
-    <!-- Tek örnekle başlıyoruz -->
-
-    <!-- Döngü ile oluşturuyorum -->
-    <!-- Başlıklar ve fiyatlar otomatik yazılıyor -->
-
-    <!-- Ürünler -->
-    <!-- Not: 5 placeholder görsel kullanılıyor. Sen kendi görsellerinle değiştir. -->
-
-    <!-- Ürün bloğu başlat -->
-    <!-- Başlık ve fiyat listesi -->
-
-<script>
-const urunler = [
-  ["İngiliz Asker Map", "333TL"],
-  ["BOT Site V1", "50TL"],
-  ["BOT Website V2", "45TL"],
-  ["Link Site V1/V2/V3", "25TL"],
-  ["Kişisel Web Site", "35TL"],
-  ["Ferrari (İndirim Olur)", "50TL"],
-  ["50 Kişilik Bot Basma", "10TL"],
-  ["Askeri Map 1", "75TL"],
-  ["Askeri Map 2", "100TL"],
-  ["SCP Map", "755TL"],
-  ["Bütün Oyun Hesapları", "Fiyat Değişir"],
-  ["Kart ile Açılan Kapı Script", "5TL"],
-  ["Duello Map (İndirim Olur)", "50TL"],
-  ["Şehir Map", "304TL"]
-];
-
-document.write(`<div class="container">`);
-
-urunler.forEach((urun, index) => {
-  const id = `img${index + 1}`;
-  document.write(`
-  <div class="product">
-    <img id="${id}" src="https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}" alt="${urun[0]}">
-    <h3>${urun[0]}</h3>
-    <p>${urun[1]}</p>
-    <div class="buttons">
-      <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+1'">1</button>
-      <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+2'">2</button>
-      <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+3'">3</button>
-      <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+4'">4</button>
-      <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+5'">5</button>
-    </div>
-    <a href="https://discord.gg/ZspkFcwrSz" target="_blank">
-      <button class="buy-button">Satın Al</button>
-    </a>
-  </div>
-  `);
-});
-
-document.write(`</div>`);
-</script>
+      document.write(`</div>`);
+    </script>
 
   </div>
 </body>

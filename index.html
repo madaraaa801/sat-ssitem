@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>HAVEN #SATIŞ</title>
   <style>
     body {
@@ -56,12 +56,19 @@
     }
 
     .product {
-      background: rgba(30, 30, 30, 0.75); /* Şeffaf kutu */
+      background: rgba(30, 30, 30, 0.7);
       border-radius: 12px;
       padding: 15px;
       width: 280px;
       text-align: center;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      box-shadow: 0 0 8px rgba(0,255,136,0.3);
+      transition: transform 0.2s ease;
+    }
+    .product:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(0,255,136,0.6);
     }
 
     .product img {
@@ -84,6 +91,7 @@
       margin: 3px;
       padding: 6px 12px;
       cursor: pointer;
+      font-weight: bold;
     }
 
     .buy-button {
@@ -92,9 +100,15 @@
       font-weight: bold;
       border: none;
       border-radius: 6px;
-      padding: 8px 14px;
-      margin-top: 10px;
+      padding: 10px 14px;
+      margin-top: 12px;
       cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+      transition: background 0.3s ease;
+    }
+    .buy-button:hover {
+      background: #00cc6b;
     }
 
     @media screen and (max-width: 600px) {
@@ -112,57 +126,59 @@
 
   <div class="top-bar">
     <h1>HAVEN #SATIŞ</h1>
-    <a href="https://forms.gle/SdvF2Eqw5MwbQWWf9" target="_blank">
-      <button class="how-to-buy">Nasıl satın alırım?</button>
-    </a>
+    <button class="how-to-buy" onclick="window.location.href='https://forms.gle/SdvF2Eqw5MwbQWWf9'">Nasıl satın alırım?</button>
   </div>
   <p>Sunucuya özel güvenli ve hızlı ürünler</p>
 
-  <div class="container">
-    <script>
-      const urunler = [
-        ["İngiliz Asker Map", "333TL"],
-        ["BOT Site V1", "50TL"],
-        ["BOT Website V2", "45TL"],
-        ["Link Site V1/V2/V3", "25TL"],
-        ["Kişisel Web Site", "35TL"],
-        ["Ferrari (İndirim Olur)", "50TL"],
-        ["50 Kişilik Bot Basma", "10TL"],
-        ["Askeri Map 1", "75TL"],
-        ["Askeri Map 2", "100TL"],
-        ["SCP Map", "755TL"],
-        ["Bütün Oyun Hesapları", "Fiyat Değişir"],
-        ["Kart ile Açılan Kapı Script", "5TL"],
-        ["Duello Map (İndirim Olur)", "50TL"],
-        ["Şehir Map", "304TL"]
-      ];
-
-      document.write(`<div class="container">`);
-
-      urunler.forEach((urun, index) => {
-        const id = `img${index + 1}`;
-        const urunID = index + 1;
-        document.write(`
-          <div class="product">
-            <img id="${id}" src="https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}" alt="${urun[0]}">
-            <h3>${urun[0]}</h3>
-            <p>${urun[1]}</p>
-            <div class="buttons">
-              <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+1'">1</button>
-              <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+2'">2</button>
-              <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+3'">3</button>
-              <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+4'">4</button>
-              <button onclick="document.getElementById('${id}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun[0])}+Foto+5'">5</button>
-            </div>
-            <a href="iban.html?urun=${urunID}" >
-              <button class="buy-button">Satın Al</button>
-            </a>
-          </div>
-        `);
-      });
-
-      document.write(`</div>`);
-    </script>
+  <div class="container" id="urunler-container">
+    <!-- Ürünler JS ile gelecek -->
   </div>
+
+  <script>
+    const urunler = [
+      { id: 1, ad: "İngiliz Asker Map", fiyat: "333 TL" },
+      { id: 2, ad: "BOT Site V1", fiyat: "50 TL" },
+      { id: 3, ad: "BOT Website V2", fiyat: "45 TL" },
+      { id: 4, ad: "Link Site V1/V2/V3", fiyat: "25 TL" },
+      { id: 5, ad: "Kişisel Web Site", fiyat: "35 TL" },
+      { id: 6, ad: "Ferrari (İndirim Olur)", fiyat: "50 TL" },
+      { id: 7, ad: "50 Kişilik Bot Basma", fiyat: "10 TL" },
+      { id: 8, ad: "Askeri Map 1", fiyat: "75 TL" },
+      { id: 9, ad: "Askeri Map 2", fiyat: "100 TL" },
+      { id: 10, ad: "SCP Map", fiyat: "755 TL" },
+      { id: 11, ad: "Bütün Oyun Hesapları", fiyat: "Fiyat Değişir" },
+      { id: 12, ad: "Kart ile Açılan Kapı Script", fiyat: "5 TL" },
+      { id: 13, ad: "Duello Map (İndirim Olur)", fiyat: "50 TL" },
+      { id: 14, ad: "Şehir Map", fiyat: "304 TL" }
+    ];
+
+    const container = document.getElementById("urunler-container");
+
+    urunler.forEach(urun => {
+      // Ürün kutusunu oluştur
+      const div = document.createElement("div");
+      div.className = "product";
+
+      // Resim id'si
+      const imgId = `img${urun.id}`;
+
+      div.innerHTML = `
+        <img id="${imgId}" src="https://via.placeholder.com/250x160?text=${encodeURIComponent(urun.ad)}" alt="${urun.ad}" />
+        <h3>${urun.ad}</h3>
+        <p>${urun.fiyat}</p>
+        <div class="buttons">
+          <button onclick="document.getElementById('${imgId}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun.ad)}+Foto+1'">1</button>
+          <button onclick="document.getElementById('${imgId}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun.ad)}+Foto+2'">2</button>
+          <button onclick="document.getElementById('${imgId}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun.ad)}+Foto+3'">3</button>
+          <button onclick="document.getElementById('${imgId}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun.ad)}+Foto+4'">4</button>
+          <button onclick="document.getElementById('${imgId}').src='https://via.placeholder.com/250x160?text=${encodeURIComponent(urun.ad)}+Foto+5'">5</button>
+        </div>
+        <button class="buy-button" onclick="window.location.href='iban.html?urun=${urun.id}'">Satın Al</button>
+      `;
+
+      container.appendChild(div);
+    });
+  </script>
+
 </body>
 </html>
